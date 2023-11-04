@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5481427146482122883}
   - component: {fileID: 8390775052247146394}
   - component: {fileID: 6492871985486445700}
+  - component: {fileID: 5416654692845644062}
   m_Layer: 22
   m_Name: balabamian
   m_TagString: Untagged
@@ -153,5 +154,24 @@ MonoBehaviour:
   jumpStrength: 4.5
   accelSpeed: 30
   decelSpeed: 10
-  leftWall: 0
+  facingLeft: 0
   jumpSound: {fileID: 0}
+--- !u!114 &5416654692845644062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604096113096407786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960200ac83f33974aa63ca2296025f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumHealth: 100
+  body: {fileID: 8390775052247146394}
+  trans: {fileID: 9031541097110853996}
+  spawnPoints:
+  - {x: 0, y: 0, z: 0}
+  killDevTool: 0
+  damageDevTool: 0
