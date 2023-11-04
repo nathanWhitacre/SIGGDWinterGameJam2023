@@ -7,7 +7,7 @@ public class move_1 : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform trans;
-    [SerializeField] private float rayLength;
+    private float rayLength;
     [SerializeField] private float jumpStrength;
     [SerializeField] private float accelSpeed;
     [SerializeField] private float decelSpeed;
@@ -17,6 +17,7 @@ public class move_1 : MonoBehaviour
     private int floorLayer;
     private int albanianLayer;
     private int groundMask;
+    private float sideOffset;
 
 
     // Start is called before the first frame update
@@ -29,6 +30,10 @@ public class move_1 : MonoBehaviour
         int groundMask_temp = 1 << floorLayer;
         int albanianMask_temp = 1 << albanianLayer;
         groundMask = groundMask_temp | albanianMask_temp;
+        
+        sideOffset = (trans.localScale.x / 2) - 0.01f;
+        rayLength = (trans.localScale.y / 2) + 0.01f;
+        
     }
 
     // Update is called once per frame
@@ -36,11 +41,11 @@ public class move_1 : MonoBehaviour
     {   
         
         Vector3 leftPos = trans.position;
-        leftPos.x -= 0.49f;
+        leftPos.x -= sideOffset;
         Vector3 rightPos = trans.position;
-        rightPos.x += 0.49f;
+        rightPos.x += sideOffset;
 
-        if ((Physics.Raycast(leftPos, (trans.up * -1), rayLength, groundMask)) || (Physics.Raycast(rightPos, (trans.up * -1), rayLength, groundMask))) {
+        if ((Physics.Raycast(leftPos, (trans.up * -1), rayLength, groundMask)) || (Physics.Raycast(rightPos, (trans.up * -1), rayLength, groundMask)) || (Physics.Raycast(trans.position, (trans.up * -1), rayLength, groundMask))) {
             grounded = true;
         }
         else {
@@ -77,7 +82,6 @@ public class move_1 : MonoBehaviour
         tempV.z = 0;
         body.velocity = tempV;
 
-
-        //body.MovePosition(body.position + (movementVec * speed * Time.deltaTime));
+        
     }
 }
