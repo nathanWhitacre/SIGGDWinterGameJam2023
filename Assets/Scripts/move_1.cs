@@ -14,6 +14,11 @@ public class move_1 : MonoBehaviour
     private bool grounded;
     public bool facingLeft;
     [SerializeField] private AudioSource jumpSound;
+    [SerializeField] private float dashDelay;
+    [SerializeField] private float dashStrength;
+    [SerializeField] private float dashTimeLength;
+    [SerializeField] private float gravResist;
+    private bool inDash;
     private int floorLayer;
     private int albanianLayer;
     private int groundMask;
@@ -21,6 +26,12 @@ public class move_1 : MonoBehaviour
     private int platformLayer;
     private RaycastHit hit;
     private BoxCollider platCollide;
+
+    private bool leftPushed;
+    private bool rightPushed;
+    private float leftTime;
+    private float rightTime;
+    private float dashTime;
 
 
     // Start is called before the first frame update
@@ -42,6 +53,10 @@ public class move_1 : MonoBehaviour
         platCollide = trans.GetChild(0).gameObject.GetComponent<BoxCollider>();
         Debug.Log(platCollide);
         platCollide.enabled = false;
+
+        leftPushed = false;
+        rightPushed = false;
+        inDash = false;
         
     }
 
@@ -78,11 +93,46 @@ public class move_1 : MonoBehaviour
         else if (Input.GetKey(KeyCode.A)) {
             tempV.x += (((-1 * moveSpeed) - tempV.x) / 2) * Time.deltaTime * accelSpeed;
             facingLeft = true;
+            if (leftPushed == false) {
+                if (((Time.time - leftTime) < dashDelay) && (inDash == false)) {
+                    tempV.x += (-1) * dashStrength * 5;
+                    tempV.y = 0;
+                    inDash = true;
+                    dashTime = Time.time;
+                }
+                leftPushed = true;
+                leftTime = Time.time;
+            }
         }
         else {
             tempV.x += ((moveSpeed - tempV.x) / 2) * Time.deltaTime * accelSpeed;
             facingLeft = false;
+            if (rightPushed == false) {
+                if (((Time.time - rightTime) < dashDelay) && (inDash == false)) {
+                    tempV.x += dashStrength * 5;
+                    tempV.y = 0;
+                    inDash = true;
+                    dashTime = Time.time;
+                }
+                rightPushed = true;
+                rightTime = Time.time;
+            }
         }
+
+        if (inDash) {
+            tempV.y += gravResist * Time.deltaTime;
+            if (Time.time - dashTime > dashTimeLength) {
+                inDash = false;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A) == false) {
+            leftPushed = false;
+        }
+        if (Input.GetKey(KeyCode.D) == false) {
+            rightPushed = false;
+        }
+
 
 
         //jumping

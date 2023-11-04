@@ -714,6 +714,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: alabamian
       objectReference: {fileID: 0}
+    - target: {fileID: 7544492980755709417, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: dashDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544492980755709417, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: decelSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544492980755709417, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: gravResist
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544492980755709417, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: dashStrength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544492980755709417, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: dashTimeLength
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.91
