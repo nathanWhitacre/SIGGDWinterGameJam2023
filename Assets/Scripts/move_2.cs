@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move_1 : MonoBehaviour
+public class move_2 : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody body;
@@ -34,7 +34,6 @@ public class move_1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        
         Vector3 leftPos = trans.position;
         leftPos.x -= 0.49f;
         Vector3 rightPos = trans.position;
@@ -52,10 +51,10 @@ public class move_1 : MonoBehaviour
         float speed = moveSpeed;
         
         //horizontal movement
-        if (Input.GetKey(KeyCode.A) == Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.J) == Input.GetKey(KeyCode.L)) {
             tempV.x -= (tempV.x / 2) * Time.deltaTime * decelSpeed;
         }
-        else if (Input.GetKey(KeyCode.A)) {
+        else if (Input.GetKey(KeyCode.J)) {
             tempV.x += (((-1 * moveSpeed) - tempV.x) / 2) * Time.deltaTime * accelSpeed;
             facingLeft = true;
         }
@@ -66,7 +65,7 @@ public class move_1 : MonoBehaviour
 
 
         //jumping
-        if (Input.GetKey(KeyCode.W) && grounded == true) {
+        if (Input.GetKey(KeyCode.I) && grounded == true) {
             Debug.Log("albanian jump");
             grounded = false;
             tempV.y = 5 * jumpStrength;
