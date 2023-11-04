@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class move_1 : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody body;
@@ -13,6 +13,8 @@ public class movement : MonoBehaviour
     private bool grounded;
     public bool leftWall;
     [SerializeField] private AudioSource jumpSound;
+    private int floorLayer;
+    private LayerMask mask;
 
 
     // Start is called before the first frame update
@@ -20,20 +22,21 @@ public class movement : MonoBehaviour
     {
         grounded = true;
         leftWall = true;
+        floorLayer = LayerMask.NameToLayer("floor");
+        mask = LayerMask.GetMask("albanian");
     }
 
-    private LayerMask mask = LayerMask.GetMask("alabamian");
     void OnCollisionEnter(Collision col) {
-        if ((col.gameObject.layer == LayerMask.NameToLayer("platforms"))) {
+        if ((col.gameObject.layer == floorLayer)) {
             if (Physics.Raycast(trans.position, (trans.up * -1), rayLength, ~mask)) {
-                Debug.Log("alabamian grounded");
+                Debug.Log("albanian grounded");
                 grounded = true;
             }
         }
     }
 
     void OnCollisionExit(Collision col) {
-        if ((col.gameObject.layer == LayerMask.NameToLayer("platforms"))) {
+        if ((col.gameObject.layer == floorLayer)) {
             if (Physics.Raycast(trans.position, (trans.up * -1), rayLength, ~mask)
             && !(Physics.Raycast(trans.position, (trans.right), rayLength, ~mask) || Physics.Raycast(trans.position, (trans.right * -1), rayLength, ~mask))) {
                 grounded = false;
@@ -44,12 +47,12 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        int groundMask = 1 << LayerMask.NameToLayer("platforms");
+        int groundMask = 1 << floorLayer;
 
         Vector3 leftPos = trans.position;
-        leftPos.x -= 0.74f;
+        leftPos.x -= 0.49f;
         Vector3 rightPos = trans.position;
-        rightPos.x += 0.74f;
+        rightPos.x += 0.49f;
 
         if ((Physics.Raycast(leftPos, (trans.up * -1), rayLength, groundMask)) || (Physics.Raycast(rightPos, (trans.up * -1), rayLength, groundMask))) {
             grounded = true;
@@ -83,7 +86,7 @@ public class movement : MonoBehaviour
 
         //jumping
         if (Input.GetKey(KeyCode.W) && grounded == true) {
-            Debug.Log("dog jump");
+            Debug.Log("albanian jump");
             grounded = false;
             Vector3 vel = body.velocity;
             vel.y = 5 * jumpStrength;
