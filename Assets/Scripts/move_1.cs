@@ -66,10 +66,7 @@ public class move_1 : MonoBehaviour
 
         float speed = moveSpeed;
 
-        Vector3 tempV = body.velocity;
-        tempV.x = 0;
-        tempV.z = 0;
-        body.velocity = tempV;
+        
 
         //horizontal movement
         if (Input.GetKey(KeyCode.A) == Input.GetKey(KeyCode.D)) {
@@ -93,6 +90,11 @@ public class move_1 : MonoBehaviour
             body.velocity = vel;
             //jumpSound.Play();
         }
+
+        Vector3 tempV = body.velocity;
+        tempV.x = 0;
+        tempV.z = 0;
+        body.velocity = tempV;
 
 
         body.MovePosition(body.position + (movementVec * speed * Time.deltaTime));
