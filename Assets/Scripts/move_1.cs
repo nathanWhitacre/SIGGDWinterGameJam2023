@@ -18,6 +18,9 @@ public class move_1 : MonoBehaviour
     private int albanianLayer;
     private int groundMask;
     private float sideOffset;
+    private int platformLayer;
+    private RaycastHit hit;
+    private BoxCollider platCollide;
 
 
     // Start is called before the first frame update
@@ -27,12 +30,18 @@ public class move_1 : MonoBehaviour
         facingLeft = true;
         floorLayer = LayerMask.NameToLayer("floor");
         albanianLayer = LayerMask.NameToLayer("albanian");
+        platformLayer = LayerMask.NameToLayer("platform");
         int groundMask_temp = 1 << floorLayer;
         int albanianMask_temp = 1 << albanianLayer;
-        groundMask = groundMask_temp | albanianMask_temp;
+        int platformMask_temp = 1 << platformLayer;
+        groundMask = (groundMask_temp | albanianMask_temp) | platformMask_temp;
         
         sideOffset = (trans.localScale.x / 2) - 0.01f;
         rayLength = (trans.localScale.y / 2) + 0.01f;
+
+        platCollide = trans.GetChild(0).gameObject.GetComponent<BoxCollider>();
+        Debug.Log(platCollide);
+        platCollide.enabled = false;
         
     }
 
@@ -45,10 +54,16 @@ public class move_1 : MonoBehaviour
         Vector3 rightPos = trans.position;
         rightPos.x += sideOffset;
 
-        if ((Physics.Raycast(leftPos, (trans.up * -1), rayLength, groundMask)) || (Physics.Raycast(rightPos, (trans.up * -1), rayLength, groundMask)) || (Physics.Raycast(trans.position, (trans.up * -1), rayLength, groundMask))) {
+        if ((Physics.Raycast(leftPos, (trans.up * -1), out hit, rayLength, groundMask)) || (Physics.Raycast(rightPos, (trans.up * -1), out hit, rayLength, groundMask)) || (Physics.Raycast(trans.position, (trans.up * -1), out hit, rayLength, groundMask))) {
+            if (hit.transform.gameObject.layer == platformLayer) {
+                Debug.Log("plat collide enabled");
+                platCollide.enabled = true;
+            }
             grounded = true;
         }
         else {
+            Debug.Log("plat collide disabled");
+            platCollide.enabled = false;
             grounded = false;
         }
 
