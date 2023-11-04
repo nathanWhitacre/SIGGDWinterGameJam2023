@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - floor
-  - 
+  - platform
   - 
   - 
   - 
@@ -28,7 +28,7 @@ TagManager:
   - 
   - 
   - albanian
-  - 
+  - platformCollider
   - 
   - 
   - 
