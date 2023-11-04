@@ -32,6 +32,8 @@ public class move_1 : MonoBehaviour
     private float leftTime;
     private float rightTime;
     private float dashTime;
+    public bool trampd;
+    [SerializeField] private float terminalVelocity;
 
 
     // Start is called before the first frame update
@@ -57,22 +59,48 @@ public class move_1 : MonoBehaviour
         leftPushed = false;
         rightPushed = false;
         inDash = false;
+        trampd = false;
         
     }
 
     // Update is called once per frame
     void Update()
     {   
+
         
+        Vector3 tempV = body.velocity;
+        if ((tempV.y * -1) > terminalVelocity) {
+            tempV.y = -1 * terminalVelocity;
+        }
+
+
         Vector3 leftPos = trans.position;
         leftPos.x -= sideOffset;
         Vector3 rightPos = trans.position;
         rightPos.x += sideOffset;
 
         if ((Physics.Raycast(leftPos, (trans.up * -1), out hit, rayLength, groundMask)) || (Physics.Raycast(rightPos, (trans.up * -1), out hit, rayLength, groundMask)) || (Physics.Raycast(trans.position, (trans.up * -1), out hit, rayLength, groundMask))) {
-            if (hit.transform.gameObject.layer == platformLayer) {
+            GameObject hitObject = hit.transform.gameObject;
+            if (hitObject.layer == platformLayer) {
                 Debug.Log("plat collide enabled");
                 platCollide.enabled = true;
+                if ((hitObject.tag == "trampoline") && (trampd == false)) {
+                    tempV.y = tempV.y * -1;
+                    tempV.y += 4;
+                    if (Input.GetKey(KeyCode.W)) {
+                        tempV.y += 8;
+                    }
+                    trampd = true;
+                    grounded = false;
+                    Debug.Log("trampd");
+                }
+                if (hitObject.tag != "trampoline") {
+                    tempV.y = 0;
+                    trampd = false;
+                }
+            }
+            if (hitObject.layer == floorLayer) {
+                tempV.y = 0;
             }
             grounded = true;
         }
@@ -80,9 +108,10 @@ public class move_1 : MonoBehaviour
             Debug.Log("plat collide disabled");
             platCollide.enabled = false;
             grounded = false;
+            trampd = false;
         }
 
-        Vector3 tempV = body.velocity;
+
 
         float speed = moveSpeed;
         
@@ -119,12 +148,6 @@ public class move_1 : MonoBehaviour
             }
         }
 
-        if (inDash) {
-            tempV.y += gravResist * Time.deltaTime;
-            if (Time.time - dashTime > dashTimeLength) {
-                inDash = false;
-            }
-        }
 
         if (Input.GetKey(KeyCode.A) == false) {
             leftPushed = false;
@@ -133,16 +156,20 @@ public class move_1 : MonoBehaviour
             rightPushed = false;
         }
 
-
-
         //jumping
-        if (Input.GetKey(KeyCode.W) && grounded == true) {
+        if (Input.GetKey(KeyCode.W) && (grounded == true) && (tempV.y <= 0)) {
             Debug.Log("albanian jump");
             grounded = false;
-            tempV.y = 5 * jumpStrength;
+            tempV.y += 5 * jumpStrength;
             //jumpSound.Play();
         }
 
+        if (inDash) {
+            tempV.y += gravResist * Time.deltaTime;
+            if (Time.time - dashTime > dashTimeLength) {
+                inDash = false;
+            }
+        }
 
         tempV.z = 0;
         body.velocity = tempV;
