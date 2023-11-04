@@ -7,10 +7,15 @@ public class health : MonoBehaviour
 {
 
     [SerializeField] private int maximumHealth = 100;
+    [SerializeField] private Rigidbody body;
+    [SerializeField] private Transform trans;
+    [SerializeField] private List<Vector3> spawnPoints;
+    [SerializeField] private bool killDevTool = false;
+    [SerializeField] private bool damageDevTool = false;
     private float currentHealth = 1;
     
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -46,13 +51,25 @@ public class health : MonoBehaviour
 
     public void kill()
     {
-        
+        int nextSpawnIndex = Random.Range(0, spawnPoints.Count);
+        trans.position = spawnPoints[nextSpawnIndex];
+        currentHealth = maximumHealth;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (killDevTool)
+        {
+            killDevTool = false;
+            kill();
+        }
+
+        if (damageDevTool)
+        {
+            damageDevTool = false;
+            damage(35);
+        }
     }
 }
