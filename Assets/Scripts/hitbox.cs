@@ -26,7 +26,7 @@ public class hitbox : MonoBehaviour
     }
 
 
-    public void damageHitTargets(float damage)
+    public void damageHitTargets(float damage, Vector3 direction)
     {
         foreach (Transform target in hitTargets)
         {
@@ -34,6 +34,7 @@ public class hitbox : MonoBehaviour
             if (targetHealth != null)
             {
                 targetHealth.damage(damage);
+                target.gameObject.GetComponent<Rigidbody>().AddForce((5 * direction), ForceMode.Impulse);
                 Debug.Log("Damaged " + target.name + " for " + damage + " damage");
             }
         }
