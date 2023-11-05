@@ -84,7 +84,7 @@ public class move_1 : MonoBehaviour
 
 
         platCollide = trans.GetChild(0).gameObject.GetComponent<BoxCollider>();
-        Debug.Log(platCollide);
+        //Debug.Log(platCollide);
         platCollide.enabled = false;
 
         leftPushed = false;
@@ -113,7 +113,7 @@ public class move_1 : MonoBehaviour
         if ((Physics.Raycast((leftPos + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask)) || (Physics.Raycast((rightPos + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask)) || (Physics.Raycast((trans.position + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask))) {
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.layer == platformLayer) {
-                Debug.Log("plat collide enabled");
+                //Debug.Log("plat collide enabled");
                 platCollide.enabled = true;
                 if ((hitObject.tag == "trampoline") && (trampd == false)) {
                     tempV.y = tempV.y * -1;
@@ -129,7 +129,7 @@ public class move_1 : MonoBehaviour
                     }
                     trampd = true;
                     grounded = false;
-                    Debug.Log("trampd");
+                    //Debug.Log("trampd");
                 }
                 if (hitObject.tag != "trampoline") {
                     tempV.y = 0;
@@ -142,7 +142,7 @@ public class move_1 : MonoBehaviour
             grounded = true;
         }
         else {
-            Debug.Log("plat collide disabled");
+            //Debug.Log("plat collide disabled");
             platCollide.enabled = false;
             grounded = false;
             trampd = false;
@@ -195,7 +195,7 @@ public class move_1 : MonoBehaviour
 
         //jumping
         if (Input.GetKey(upKey) && (grounded == true) && (tempV.y <= 0)) {
-            Debug.Log("albanian jump");
+            //Debug.Log("albanian jump");
             grounded = false;
             tempV.y += 5 * jumpStrength;
             //jumpSound.Play();

@@ -11,6 +11,7 @@ public class ThrowRock : MonoBehaviour
     [SerializeField] private float delay;
     [SerializeField] private float force;
 
+
     private float last_rock = 0; 
 
     // Start is called before the first frame update
