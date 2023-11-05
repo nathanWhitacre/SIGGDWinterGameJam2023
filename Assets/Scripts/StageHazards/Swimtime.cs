@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Swimtime : MonoBehaviour
 {
+    [SerializeField] float slowFactor;
     int playerLayer = 22;
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.layer == playerLayer)
         {
-
+            float speed = collider.gameObject.GetComponent<move_1>().getSpeed();
+            collider.gameObject.GetComponent<move_1>().setSpeed(speed * slowFactor);
         }
     }
 
@@ -18,7 +20,8 @@ public class Swimtime : MonoBehaviour
     {
         if (collider.gameObject.layer == playerLayer)
         {
-
+            float speed = collider.gameObject.GetComponent<move_1>().getSpeed();
+            collider.gameObject.GetComponent<move_1>().setSpeed(speed / slowFactor);
         }
     }
 }

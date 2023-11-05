@@ -1167,8 +1167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc88b766892df8468adef4dd0b27e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burn_delay: 5
-  burn_dmg: 10
+  burn_delay: 0.75
+  burn_dmg: 5
 --- !u!65 &983311094
 BoxCollider:
   m_ObjectHideFlags: 0

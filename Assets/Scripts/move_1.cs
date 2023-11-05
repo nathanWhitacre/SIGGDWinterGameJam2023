@@ -42,11 +42,11 @@ public class move_1 : MonoBehaviour
     KeyCode upKey;
     KeyCode downKey;
 
-    float getSpeed() {
+    public float getSpeed() {
         return moveSpeed;
     }
 
-    void setSpeed(float sp) {
+    public void setSpeed(float sp) {
         moveSpeed = sp;
         return;
     }
