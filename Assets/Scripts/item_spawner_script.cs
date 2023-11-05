@@ -37,6 +37,6 @@ public class item_spawner_script : MonoBehaviour
         tempSpawn.x += pos;
         GameObject item = Instantiate(itemBox, tempSpawn, Quaternion.identity);
         //item type set here
-        item.GetComponent<item_info>().itemID = 0;
+        item.GetComponent<item_info>().setID(0);
     }
 }

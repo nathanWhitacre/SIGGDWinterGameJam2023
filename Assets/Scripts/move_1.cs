@@ -42,7 +42,6 @@ public class move_1 : MonoBehaviour
     KeyCode leftKey;
     KeyCode rightKey;
     KeyCode upKey;
-    KeyCode downKey;
 
     public float getSpeed() {
         return moveSpeed;
@@ -59,13 +58,11 @@ public class move_1 : MonoBehaviour
         if (playerOne) {
             leftKey = KeyCode.A;
             rightKey = KeyCode.D;
-            downKey = KeyCode.S;
             upKey = KeyCode.W;
         }
         else {
             leftKey = KeyCode.J;
             rightKey = KeyCode.L;
-            downKey = KeyCode.K;
             upKey = KeyCode.I;
         }
 
