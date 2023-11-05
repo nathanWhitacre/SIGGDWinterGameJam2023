@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PunchAttack : MonoBehaviour
 {
-
     [SerializeField] private int baseDamage = 0;
     private int damage;
     [SerializeField] private int drunkDmg = 4;
@@ -30,7 +29,6 @@ public class PunchAttack : MonoBehaviour
     void Update()
     {
 
-
         if (Input.GetKeyDown(inputButton))
         {
             Rigidbody playerRigidBody = player.gameObject.GetComponent<Rigidbody>();
@@ -53,6 +51,7 @@ public class PunchAttack : MonoBehaviour
         knockback = baseKnockback + (beerLevel * drunkKnockback);
         lungeImpulse = baseLungeImpulse + (beerLevel * drunkLunge);
     }
+
 
 
 }

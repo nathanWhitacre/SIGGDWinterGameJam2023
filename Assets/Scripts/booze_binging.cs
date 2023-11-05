@@ -9,6 +9,8 @@ public class booze_binging : MonoBehaviour
     [SerializeField] private bool player1;
     private KeyCode downKey;
     private int itemLayer;
+    private bool shotgunEquipped;
+    private bool ballEquipped;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class booze_binging : MonoBehaviour
             downKey = KeyCode.K;
         }
         itemLayer = LayerMask.NameToLayer("item");
+        shotgunEquipped = false;
+        ballEquipped = false;
     }
 
     // Update is called once per frame
@@ -78,6 +82,19 @@ public class booze_binging : MonoBehaviour
             }
             else if (id == 1) {
                 this.eatChicken();
+            }
+            else if ((id == 2) && (shotgunEquipped == false)) {
+                //show shotgun on model
+                //replace ball if equipped
+                shotgunEquipped = true;
+                ballEquipped = false;
+
+            }
+            else if ((id == 3) && (ballEquipped == false)) {
+                //show ball on model
+                //replace shotgun if equipped
+                ballEquipped = true;
+                shotgunEquipped = false;
             }
             Destroy(item);
         }
