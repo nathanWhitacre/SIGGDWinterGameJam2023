@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move_1 : MonoBehaviour
-{   
-    [SerializeField] private bool playerOne;
+public class move_2 : MonoBehaviour
+{
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform trans;
@@ -33,14 +32,14 @@ public class move_1 : MonoBehaviour
     private float leftTime;
     private float rightTime;
     private float dashTime;
-    private bool trampd;
+    public bool trampd;
     [SerializeField] private float terminalVelocity;
     [SerializeField] private float maxTramp;
 
-    KeyCode leftKey;
-    KeyCode rightKey;
-    KeyCode upKey;
-    KeyCode downKey;
+    KeyCode leftKey = KeyCode.J;
+    KeyCode rightKey = KeyCode.L;
+    //KeyCode downKey = KeyCode.K;
+    KeyCode upKey = KeyCode.I;
 
     float getSpeed() {
         return moveSpeed;
@@ -54,19 +53,6 @@ public class move_1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (playerOne) {
-            leftKey = KeyCode.A;
-            rightKey = KeyCode.D;
-            downKey = KeyCode.S;
-            upKey = KeyCode.W;
-        }
-        else {
-            leftKey = KeyCode.J;
-            rightKey = KeyCode.L;
-            downKey = KeyCode.K;
-            upKey = KeyCode.I;
-        }
-
         grounded = true;
         facingLeft = true;
         floorLayer = LayerMask.NameToLayer("floor");
@@ -94,7 +80,6 @@ public class move_1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-
         
         Vector3 tempV = body.velocity;
         if ((tempV.y * -1) > terminalVelocity) {

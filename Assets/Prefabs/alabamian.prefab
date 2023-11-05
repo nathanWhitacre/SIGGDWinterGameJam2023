@@ -185,9 +185,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &7544492980755709417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,11 +200,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ceb566169d92d41bb1289aafb4cc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOne: 1
   moveSpeed: 8
   body: {fileID: 8390775052247146394}
   trans: {fileID: 9031541097110853996}
   jumpStrength: 4.5
   accelSpeed: 30
-  decelSpeed: 10
+  decelSpeed: 8
   facingLeft: 0
   jumpSound: {fileID: 0}
+  dashDelay: 0.2
+  dashStrength: 10
+  dashTimeLength: 0.4
+  gravResist: 30
+  terminalVelocity: 30
+  maxTramp: 40
