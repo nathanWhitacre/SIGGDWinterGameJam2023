@@ -149,6 +149,7 @@ MonoBehaviour:
   ballForce: 0
   frontOffset: 0
   projectile: {fileID: 0}
+  playerBody: {fileID: 0}
 --- !u!1001 &520232501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,6 +457,12 @@ MonoBehaviour:
   ballForce: 50
   frontOffset: 1.5
   projectile: {fileID: 5328969914178932489, guid: 69f39e2b44dad7a47b55a59529eaf196, type: 3}
+  playerBody: {fileID: 952446328}
+--- !u!54 &952446328 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8390775052247146394, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+  m_PrefabInstance: {fileID: 9042823398202136294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1638947187
 GameObject:
   m_ObjectHideFlags: 0

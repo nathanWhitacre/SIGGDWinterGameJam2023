@@ -23,6 +23,7 @@ public class item_spawner_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spanVec.x = spread;
         Debug.DrawLine(trans.position, (trans.position + spanVec), Color.red);
         Debug.DrawLine(trans.position, (trans.position - spanVec), Color.red);
         if (Time.time - prevTime > freq) {

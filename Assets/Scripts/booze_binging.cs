@@ -17,6 +17,7 @@ public class booze_binging : MonoBehaviour
     [SerializeField] private float frontOffset;
 
     [SerializeField] private GameObject projectile;
+    [SerializeField] private Rigidbody playerBody;
     private bool left;
 
     // Start is called before the first frame update
@@ -94,6 +95,7 @@ public class booze_binging : MonoBehaviour
             launchProjectile(pointDir, gunForce, 0.3f, 15f, 0.4f);
             pointDir.y -= 0.21f;
         }
+        playerBody.AddForce((-30 * launchDir), ForceMode.Impulse);
     }
 
     void throwBowlingBall() {
