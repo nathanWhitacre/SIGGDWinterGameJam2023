@@ -17,6 +17,7 @@ public class PunchHitbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name + " entered");
         hitTargets.Add(other.gameObject.transform);
     }
 
