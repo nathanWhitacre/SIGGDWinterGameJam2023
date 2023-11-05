@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Opposite : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Opposite : MonoBehaviour
     [SerializeField] private GameObject P2;
     [SerializeField] private float oppRate;
     [SerializeField] private float oppDuration;
-    [SerializeField] private GameObject[] reveal;
+    [SerializeField] private PostProcessVolume vol;
 
 
     public bool isOppositeDay = false;
@@ -41,8 +42,6 @@ public class Opposite : MonoBehaviour
                 NormalTime();
             } 
         }
-        
-        
     }
 
     void OppositeTime()
@@ -50,10 +49,7 @@ public class Opposite : MonoBehaviour
         isOppositeDay = true;
         last_opposite = Time.time;
         Debug.Log("Opposite Time!");
-        foreach(GameObject go in reveal)
-        {
-            go.active = true;
-        }
+        vol.weight = 1f;
     }
 
     void NormalTime()
@@ -61,10 +57,7 @@ public class Opposite : MonoBehaviour
         isOppositeDay = false;
         next_opposite = Time.time + oppRate;
         Debug.Log("Normal Time!");
-        foreach (GameObject go in reveal)
-        {
-            go.active = false;
-        }
+        vol.weight = 0f;
     }
 
 

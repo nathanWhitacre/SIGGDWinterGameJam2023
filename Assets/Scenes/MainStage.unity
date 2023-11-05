@@ -509,6 +509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 243254313}
   - component: {fileID: 243254312}
+  - component: {fileID: 243254314}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -529,6 +530,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chance: 0
+  P1: {fileID: 1670878120}
+  P2: {fileID: 1415038038}
   oppRate: 5
   oppDuration: 5
   reveal:
@@ -549,6 +552,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &243254314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243254311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a775dd77d255f34eb74ba0c88e15a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matchLength: 100
+  timer: {fileID: 554136804}
 --- !u!1 &326123631
 GameObject:
   m_ObjectHideFlags: 0
