@@ -74,6 +74,9 @@ public class health : MonoBehaviour
         int nextSpawnIndex = Random.Range(0, spawnPoints.Count);
         trans.position = spawnPoints[nextSpawnIndex];
         currentHealth = maximumHealth;
+        Opposite opp = GameObject.Find("GameManager").GetComponent<Opposite>();
+        opp.NormalTime();
+
     }
 
     public void setDrunkLevel(int lev) {
