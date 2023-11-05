@@ -4,34 +4,52 @@ using UnityEngine;
 
 public class Burning : MonoBehaviour
 {
-    private float last_burn;
     private float delay;
     private float damage;
+    private float destructDuration;
+
+    private float last_burn;
+    private float destructTime;
 
     // Start is called before the first frame update
     void Start()
     {
         last_burn = Time.time;
-        
+        destructTime = -1;
     }
 
-
-    private void OnTriggerStay(Collider collider)
+    private void Update()
     {
-        if (collider.gameObject.name == "Fireplace")
+        if (destructTime > 0)
         {
-            float current = Time.time;
-            float difference = current - last_burn;
-
-            if (difference >= delay)
+            if (Time.time > destructTime)
             {
-                this.GetComponent<health>().damage(damage);
-                last_burn = current;
-                Debug.Log("BURN BABY BURN!");
+                Destroy(this);
             }
+        }
+        float current = Time.time;
+        float difference = current - last_burn;
 
+        if (difference >= delay)
+        {
+            this.GetComponent<health>().damage(damage);
+            last_burn = current;
+            Debug.Log("BURN BABY BURN!");
         }
     }
+
+    public void SelfDestruct()
+    {
+        destructTime = Time.time + 5;
+    }
+
+    public void BurnReset()
+    {
+        destructTime = -1;
+    }
+
+
+    // Getters & Setters
 
     public void SetDelay(float delay)
     {
@@ -41,5 +59,10 @@ public class Burning : MonoBehaviour
     public void SetDamage(float damange)
     {
         this.damage = damange;
+    }
+
+    public void SetDuration(float duration)
+    {
+        destructDuration = duration;
     }
 }
