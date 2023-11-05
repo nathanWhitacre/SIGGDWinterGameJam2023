@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using Random = UnityEngine.Random;
 
 public class Opposite : MonoBehaviour
 {
     [SerializeField] private float chance;
     [SerializeField] private GameObject P1;
     [SerializeField] private GameObject P2;
-    [SerializeField] private float oppRate;
+    [SerializeField] private float minoppRate;
     [SerializeField] private float oppDuration;
     [SerializeField] private PostProcessVolume vol;
 
@@ -52,10 +53,10 @@ public class Opposite : MonoBehaviour
         vol.weight = 1f;
     }
 
-    void NormalTime()
+    public void NormalTime()
     {
         isOppositeDay = false;
-        next_opposite = Time.time + oppRate;
+        next_opposite = Time.time + minoppRate + Random.RandomRange(0f, 25f);
         Debug.Log("Normal Time!");
         vol.weight = 0f;
     }
