@@ -143,6 +143,12 @@ MonoBehaviour:
   beerInv: 0
   beerLevel: 0
   player1: 0
+  shotgunEquipped: 0
+  ballEquipped: 0
+  gunForce: 0
+  ballForce: 0
+  frontOffset: 0
+  projectile: {fileID: 0}
 --- !u!1001 &520232501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,6 +157,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1458403872139400697, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
     - target: {fileID: 2747321598021473490, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: baseDamage
       value: 15
@@ -158,6 +168,14 @@ PrefabInstance:
     - target: {fileID: 4604096113096407786, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: m_Name
       value: balabamian
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096688714778405708, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8425719
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484635663746092536, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8425719
       objectReference: {fileID: 0}
     - target: {fileID: 8390775052247146394, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: m_Interpolate
@@ -432,6 +450,12 @@ MonoBehaviour:
   beerInv: 0
   beerLevel: 0
   player1: 1
+  shotgunEquipped: 0
+  ballEquipped: 0
+  gunForce: 50
+  ballForce: 50
+  frontOffset: 1.5
+  projectile: {fileID: 5328969914178932489, guid: 69f39e2b44dad7a47b55a59529eaf196, type: 3}
 --- !u!1 &1638947187
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +846,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4390688351003975907, guid: 4797ff3b1a2be534bbb74dbb891cf768, type: 3}
+      propertyPath: itemID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5427501947273530456, guid: 4797ff3b1a2be534bbb74dbb891cf768, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1
@@ -927,6 +955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: itemSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6476497114548117160, guid: e5d35ede16bfb1d42991e45fe8ad020d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -948,9 +980,29 @@ PrefabInstance:
       propertyPath: baseDamage
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5481427146482122883, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954930555217929397, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500566371840299092, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8425719
+      objectReference: {fileID: 0}
     - target: {fileID: 7544492980755709417, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: playerOne
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623260950235429315, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8425719
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031541097110853996, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_LocalPosition.x

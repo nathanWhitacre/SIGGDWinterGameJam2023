@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Rocked : MonoBehaviour
 {
-    [SerializeField] private float force;
-    [SerializeField] private float radius;
-    [SerializeField] private float offset;
-    [SerializeField] private float damage;
+    public float force;
+    public float radius;
+    public float offset;
+    public float damage;
+    public float duration = 2f;
+    private float instTime;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,5 +20,15 @@ public class Rocked : MonoBehaviour
             Debug.Log("EXPLODE!");
         }
         Destroy(gameObject);
+    }
+
+    void Start() {
+        instTime = Time.time;
+    }
+
+    void Update() {
+        if (Time.time - instTime > duration) {
+            Destroy(gameObject);
+        }
     }
 }

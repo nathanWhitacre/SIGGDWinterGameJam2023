@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class item_info : MonoBehaviour
 {   
-    private int itemID;
+    [SerializeField] private int itemID = 0;
     [SerializeField] private Rigidbody body;
     [SerializeField] private float terminalVelocity;
-    [SerializeField] private BoxCollider box;
     // Start is called before the first frame update
-    void Start()
-    {
-        itemID = 0;
-    }
 
     // Update is called once per frame
     void Update()
