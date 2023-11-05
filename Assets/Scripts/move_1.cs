@@ -28,6 +28,8 @@ public class move_1 : MonoBehaviour
     private RaycastHit hit;
     private BoxCollider platCollide;
 
+    private Vector3 downOffsetVec;
+
     private bool leftPushed;
     private bool rightPushed;
     private float leftTime;
@@ -78,7 +80,11 @@ public class move_1 : MonoBehaviour
         groundMask = (groundMask_temp | albanianMask_temp) | platformMask_temp;
         
         sideOffset = (trans.localScale.x / 2) - 0.01f;
-        rayLength = (trans.localScale.y / 2) + 0.01f;
+        rayLength = (trans.localScale.y / 2) - 0.01f;
+        downOffsetVec = Vector3.zero;
+        downOffsetVec.y -= rayLength;
+        downOffsetVec = downOffsetVec * 0.5f;
+
 
         platCollide = trans.GetChild(0).gameObject.GetComponent<BoxCollider>();
         Debug.Log(platCollide);
@@ -107,7 +113,7 @@ public class move_1 : MonoBehaviour
         Vector3 rightPos = trans.position;
         rightPos.x += sideOffset;
 
-        if ((Physics.Raycast(leftPos, (trans.up * -1), out hit, rayLength, groundMask)) || (Physics.Raycast(rightPos, (trans.up * -1), out hit, rayLength, groundMask)) || (Physics.Raycast(trans.position, (trans.up * -1), out hit, rayLength, groundMask))) {
+        if ((Physics.Raycast((leftPos + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask)) || (Physics.Raycast((rightPos + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask)) || (Physics.Raycast((trans.position + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask))) {
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.layer == platformLayer) {
                 Debug.Log("plat collide enabled");
@@ -133,7 +139,7 @@ public class move_1 : MonoBehaviour
                     trampd = false;
                 }
             }
-            if (hitObject.layer == floorLayer) {
+            if ((hitObject.layer == floorLayer) || (hitObject.layer == albanianLayer)) {
                 tempV.y = 0;
             }
             grounded = true;
