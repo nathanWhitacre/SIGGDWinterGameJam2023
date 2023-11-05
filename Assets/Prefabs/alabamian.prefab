@@ -237,6 +237,8 @@ MonoBehaviour:
   spawnPoints: []
   killDevTool: 0
   damageDevTool: 0
+  drunkDoT: 0
+  drunkTickTime: 0
 --- !u!114 &4700458461479932413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,9 +251,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08811779b62ac434db8ce80305663c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 35
-  lungeImpulse: 5
-  knockback: 5
+  baseDamage: 35
+  drunkDmg: 4
+  baseLungeImpulse: 5
+  drunkLunge: 3
+  baseKnockback: 5
+  drunkKnockback: 3
   inputButton: 99
   player: {fileID: 4604096113096407786}
   rightPunchHitBox: {fileID: 6783040365173693412}

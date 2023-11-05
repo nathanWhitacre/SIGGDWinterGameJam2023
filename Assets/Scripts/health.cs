@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class health : MonoBehaviour
 {
-
-    [SerializeField] private int maximumHealth = 100;
+    [SerializeField] public int maximumHealth = 100;
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform trans;
     [SerializeField] private List<Vector3> spawnPoints;
@@ -16,8 +15,7 @@ public class health : MonoBehaviour
     private float drunkLvl;
     [SerializeField] private float drunkDoT;
     [SerializeField] private float drunkTickTime;
-    private float lastTick;
-    
+    private float lastTick;    
 
     
     // Start is called before the first frame update
@@ -44,6 +42,19 @@ public class health : MonoBehaviour
 
     public void damage(float damage)
     {
+        Opposite opp = GameObject.Find("GameManager").GetComponent<Opposite>();
+        if (opp.isOppositeDay)
+        {
+            GameObject target = (this.GetComponent<move_1>().playerOne) ? opp.getP2() : opp.getP1();
+            target.GetComponent<health>().direct(damage);
+        } else
+        {
+            direct(damage);
+        }
+    }
+
+    public void direct(float damage)
+    {
         currentHealth = (currentHealth - damage > 0) ? currentHealth - damage : 0;
         if (currentHealth == 0)
         {
@@ -63,6 +74,9 @@ public class health : MonoBehaviour
         int nextSpawnIndex = Random.Range(0, spawnPoints.Count);
         trans.position = spawnPoints[nextSpawnIndex];
         currentHealth = maximumHealth;
+        Opposite opp = GameObject.Find("GameManager").GetComponent<Opposite>();
+        opp.NormalTime();
+
     }
 
     public void setDrunkLevel(int lev) {
