@@ -123,6 +123,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &219468335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4604096113096407786, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+  m_PrefabInstance: {fileID: 520232501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &219468344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219468335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb790b36aa2478b42b5e3a0b0ed6478a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beerInv: 0
+  beerLevel: 0
+  player1: 0
 --- !u!1001 &520232501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,6 +151,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2747321598021473490, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: baseDamage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4604096113096407786, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: m_Name
       value: balabamian
@@ -186,7 +210,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4604096113096407786, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 219468344}
   m_SourcePrefab: {fileID: 100100000, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
 --- !u!1 &631683798
 GameObject:
@@ -385,6 +412,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &952446315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4604096113096407786, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+  m_PrefabInstance: {fileID: 9042823398202136294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &952446324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952446315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb790b36aa2478b42b5e3a0b0ed6478a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beerInv: 0
+  beerLevel: 0
+  player1: 1
 --- !u!1 &1638947187
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,10 +866,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: item
       objectReference: {fileID: 0}
-    - target: {fileID: 7980525591605955092, guid: 4797ff3b1a2be534bbb74dbb891cf768, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -901,6 +944,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: alabamian
       objectReference: {fileID: 0}
+    - target: {fileID: 4700458461479932413, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: baseDamage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7544492980755709417, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: playerOne
       value: 1
@@ -948,7 +995,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4604096113096407786, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 952446324}
   m_SourcePrefab: {fileID: 100100000, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

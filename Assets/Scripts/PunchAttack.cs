@@ -5,14 +5,26 @@ using UnityEngine;
 public class PunchAttack : MonoBehaviour
 {
 
-    [SerializeField] private int damage = 0;
-    [SerializeField] private float lungeImpulse = 5;
-    [SerializeField] private float knockback = 5;
+    [SerializeField] private int baseDamage = 0;
+    private int damage;
+    [SerializeField] private int drunkDmg = 4;
+    [SerializeField] private float baseLungeImpulse = 5;
+    private float lungeImpulse;
+    [SerializeField] private float drunkLunge = 3;
+    [SerializeField] private float baseKnockback = 5;
+    private float knockback;
+    [SerializeField] private float drunkKnockback = 3;
     [SerializeField] private KeyCode inputButton;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject rightPunchHitBox;
     [SerializeField] private GameObject leftPunchHitBox;
 
+
+    void Start() {
+        damage = baseDamage;
+        knockback = baseKnockback;
+        lungeImpulse = baseLungeImpulse;
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,6 +46,12 @@ public class PunchAttack : MonoBehaviour
         }
 
 
+    }
+
+    public void setDrunkDmg(int beerLevel) {
+        damage = baseDamage + (beerLevel * drunkDmg);
+        knockback = baseKnockback + (beerLevel * drunkKnockback);
+        lungeImpulse = baseLungeImpulse + (beerLevel * drunkLunge);
     }
 
 

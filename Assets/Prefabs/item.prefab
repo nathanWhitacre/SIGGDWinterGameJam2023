@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9819faddfb1d244b4e4aa5c8161be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
   body: {fileID: 2409470982463653740}
   terminalVelocity: 3
+  box: {fileID: 0}

@@ -13,6 +13,10 @@ public class health : MonoBehaviour
     [SerializeField] private bool killDevTool = false;
     [SerializeField] private bool damageDevTool = false;
     private float currentHealth = 1;
+    private float drunkLvl;
+    [SerializeField] private float drunkDoT;
+    [SerializeField] private float drunkTickTime;
+    private float lastTick;
     
 
     
@@ -20,6 +24,7 @@ public class health : MonoBehaviour
     void Start()
     {
         currentHealth = maximumHealth;
+        lastTick = Time.time;
     }
 
     public float getCurrentHealth()
@@ -30,6 +35,10 @@ public class health : MonoBehaviour
     public void setCurrentHealth(float currentHealth)
     {
         this.currentHealth = currentHealth;
+    }
+
+    public void fullHealth() {
+        this.setCurrentHealth(maximumHealth);
     }
 
 
@@ -56,6 +65,13 @@ public class health : MonoBehaviour
         currentHealth = maximumHealth;
     }
 
+    public void setDrunkLevel(int lev) {
+        if (drunkLvl == 0) {
+            lastTick = Time.time;
+        }
+        drunkLvl = lev;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -70,6 +86,13 @@ public class health : MonoBehaviour
         {
             damageDevTool = false;
             damage(35);
+        }
+
+        if (drunkLvl > 0) {
+            if ((Time.time - lastTick) > drunkTickTime) {
+                this.damage(drunkDoT * drunkLvl);
+                lastTick = Time.time;
+            }
         }
     }
 }
