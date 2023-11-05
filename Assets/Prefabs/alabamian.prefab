@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ceb566169d92d41bb1289aafb4cc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOne: 1
   moveSpeed: 8
   body: {fileID: 8390775052247146394}
   trans: {fileID: 9031541097110853996}
@@ -212,5 +213,5 @@ MonoBehaviour:
   dashStrength: 10
   dashTimeLength: 0.4
   gravResist: 30
-  trampd: 0
   terminalVelocity: 30
+  maxTramp: 40
