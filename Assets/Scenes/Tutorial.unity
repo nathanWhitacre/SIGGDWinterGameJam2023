@@ -544,11 +544,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.168631
+      value: -7.81
       objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2003536
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -585,7 +585,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4604096113096407786, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1244879940}
   m_SourcePrefab: {fileID: 100100000, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
 --- !u!1 &378876557
 GameObject:
@@ -1727,6 +1730,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1244879939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4604096113096407786, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+  m_PrefabInstance: {fileID: 358839640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244879940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244879939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedc6ecf7cb75a54e9a624ada012a037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Body: {fileID: 0}
+  particleObj: {fileID: 2059690137346549895, guid: 2478e892992811e4ca90a536a4194d54, type: 3}
 --- !u!1001 &1345994153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2836,7 +2858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3810691109557425535, guid: 9f9d770c60799c54b9e8b5556b8b4195, type: 3}
       propertyPath: m_Size.y
-      value: 3.7062244
+      value: 3.650051
       objectReference: {fileID: 0}
     - target: {fileID: 3810691109557425535, guid: 9f9d770c60799c54b9e8b5556b8b4195, type: 3}
       propertyPath: m_Center.x
@@ -2844,7 +2866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3810691109557425535, guid: 9f9d770c60799c54b9e8b5556b8b4195, type: 3}
       propertyPath: m_Center.y
-      value: -2.2373238
+      value: -2.265411
       objectReference: {fileID: 0}
     - target: {fileID: 4851709274716622761, guid: 9f9d770c60799c54b9e8b5556b8b4195, type: 3}
       propertyPath: m_LocalScale.x
