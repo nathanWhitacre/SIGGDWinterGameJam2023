@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 8390775052247146394}
   - component: {fileID: 6492871985486445700}
   - component: {fileID: 5416654692845644062}
-  - component: {fileID: -1493410557161183822}
+  - component: {fileID: 1861486376679097247}
   m_Layer: 22
   m_Name: balabamian
   m_TagString: Untagged
@@ -231,7 +231,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   killDevTool: 0
   damageDevTool: 0
---- !u!114 &-1493410557161183822
+--- !u!114 &1861486376679097247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,10 +240,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4604096113096407786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 214e8d3be2c7f554e884cb504286c658, type: 3}
+  m_Script: {fileID: 11500000, guid: 08811779b62ac434db8ce80305663c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 35
+  lungeImpulse: 5
+  knockback: 5
+  inputButton: 107
   player: {fileID: 4604096113096407786}
   rightPunchHitBox: {fileID: 6290181557704091442}
   leftPunchHitBox: {fileID: 6089499282280839916}

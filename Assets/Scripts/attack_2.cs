@@ -22,11 +22,11 @@ public class attack_2 : MonoBehaviour
             if (player.GetComponent<move_2>().facingLeft)
             {
                 playerRigidBody.AddForce((5 * Vector3.left), ForceMode.Impulse);
-                leftPunchHitBox.GetComponent<hitbox>().damageHitTargets(damage, Vector3.left);
+                leftPunchHitBox.GetComponent<PunchHitbox>().damageHitTargets(damage, 5, Vector3.left);
             } else
             {
                 playerRigidBody.AddForce((5 * Vector3.right), ForceMode.Impulse);
-                rightPunchHitBox.GetComponent<hitbox>().damageHitTargets(damage, Vector3.right);
+                rightPunchHitBox.GetComponent<PunchHitbox>().damageHitTargets(damage, 5, Vector3.right);
             }
         }
 

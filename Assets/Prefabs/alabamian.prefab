@@ -294,6 +294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 35
+  lungeImpulse: 5
+  knockback: 5
+  inputButton: 99
   player: {fileID: 4604096113096407786}
   rightPunchHitBox: {fileID: 4555388588787487698}
   leftPunchHitBox: {fileID: 8864091187188070279}

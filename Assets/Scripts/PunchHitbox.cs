@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class hitbox : MonoBehaviour
+public class PunchHitbox : MonoBehaviour
 {
 
     private List<Transform> hitTargets;
@@ -26,7 +26,7 @@ public class hitbox : MonoBehaviour
     }
 
 
-    public void damageHitTargets(float damage, Vector3 direction)
+    public void damageHitTargets(float damage, float knockback, Vector3 direction)
     {
         foreach (Transform target in hitTargets)
         {
@@ -34,7 +34,7 @@ public class hitbox : MonoBehaviour
             if (targetHealth != null)
             {
                 targetHealth.damage(damage);
-                target.gameObject.GetComponent<Rigidbody>().AddForce((5 * direction), ForceMode.Impulse);
+                target.gameObject.GetComponent<Rigidbody>().AddForce((knockback * direction), ForceMode.Impulse);
                 Debug.Log("Damaged " + target.name + " for " + damage + " damage");
             }
         }
