@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 5481427146482122883}
   - component: {fileID: 8390775052247146394}
   - component: {fileID: 3566707770503072729}
+  - component: {fileID: 6466485323120171707}
   m_Layer: 22
   m_Name: balabamian
   m_TagString: Untagged
@@ -215,3 +216,16 @@ MonoBehaviour:
   gravResist: 30
   terminalVelocity: 30
   maxTramp: 40
+--- !u!114 &6466485323120171707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604096113096407786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960200ac83f33974aa63ca2296025f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumHealth: 100

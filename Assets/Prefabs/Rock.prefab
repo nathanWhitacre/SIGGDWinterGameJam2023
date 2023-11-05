@@ -149,3 +149,4 @@ MonoBehaviour:
   force: 2000
   radius: 2
   offset: 0.5
+  damage: 10
