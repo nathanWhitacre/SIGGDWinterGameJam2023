@@ -1167,8 +1167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc88b766892df8468adef4dd0b27e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burn_delay: 0
-  burn_dmg: 0
+  burn_delay: 5
+  burn_dmg: 10
 --- !u!65 &983311094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1968,6 +1968,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4604096113096407786, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_Name
       value: alabamian
