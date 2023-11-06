@@ -48,6 +48,7 @@ public class Opposite : MonoBehaviour
     void OppositeTime()
     {
         isOppositeDay = true;
+        this.gameObject.GetComponent<Match>().playOppositeDay();
         last_opposite = Time.time;
         Debug.Log("Opposite Time!");
         vol.weight = 1f;
