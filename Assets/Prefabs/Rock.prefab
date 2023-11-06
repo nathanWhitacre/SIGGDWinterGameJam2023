@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4636299632058393709}
   - component: {fileID: 2984515487842370912}
   - component: {fileID: 7751355674984698517}
-  m_Layer: 15
+  m_Layer: 12
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,3 +150,4 @@ MonoBehaviour:
   radius: 2
   offset: 0.5
   damage: 10
+  duration: 2

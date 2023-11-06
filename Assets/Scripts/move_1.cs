@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class move_1 : MonoBehaviour
 {   
-    [SerializeField] private bool playerOne;
+    [SerializeField] public bool playerOne;
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform trans;
@@ -45,7 +45,6 @@ public class move_1 : MonoBehaviour
     KeyCode leftKey;
     KeyCode rightKey;
     KeyCode upKey;
-    KeyCode downKey;
 
     public float getSpeed() {
         return moveSpeed;
@@ -62,13 +61,11 @@ public class move_1 : MonoBehaviour
         if (playerOne) {
             leftKey = KeyCode.A;
             rightKey = KeyCode.D;
-            downKey = KeyCode.S;
             upKey = KeyCode.W;
         }
         else {
             leftKey = KeyCode.J;
             rightKey = KeyCode.L;
-            downKey = KeyCode.K;
             upKey = KeyCode.I;
         }
 
@@ -92,8 +89,7 @@ public class move_1 : MonoBehaviour
 
 
         platCollide = trans.GetChild(0).gameObject.GetComponent<BoxCollider>();
-       // platCollide = hurtbox.size.GetChild(0).gameObject.GetComponent<BoxCollider>();
-        Debug.Log(platCollide);
+
         platCollide.enabled = false;
 
         leftPushed = false;
@@ -134,7 +130,7 @@ public class move_1 : MonoBehaviour
         {
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.layer == platformLayer) {
-                Debug.Log("plat collide enabled");
+                //Debug.Log("plat collide enabled");
                 platCollide.enabled = true;
                 if ((hitObject.tag == "trampoline") && (trampd == false)) {
                     tempV.y = tempV.y * -1;
@@ -150,7 +146,7 @@ public class move_1 : MonoBehaviour
                     }
                     trampd = true;
                     grounded = false;
-                    Debug.Log("trampd");
+                    //Debug.Log("trampd");
                 }
                 if (hitObject.tag != "trampoline") {
                     tempV.y = 0;
@@ -163,7 +159,7 @@ public class move_1 : MonoBehaviour
             grounded = true;
         }
         else {
-            Debug.Log("plat collide disabled");
+            //Debug.Log("plat collide disabled");
             platCollide.enabled = false;
             grounded = false;
             trampd = false;
@@ -221,7 +217,7 @@ public class move_1 : MonoBehaviour
 
         //jumping
         if (Input.GetKey(upKey) && (grounded == true) && (tempV.y <= 0)) {
-            Debug.Log("albanian jump");
+            //Debug.Log("albanian jump");
             grounded = false;
             tempV.y += 5 * jumpStrength;
             //jumpSound.Play();

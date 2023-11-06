@@ -23,6 +23,7 @@ public class item_spawner_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spanVec.x = spread;
         Debug.DrawLine(trans.position, (trans.position + spanVec), Color.red);
         Debug.DrawLine(trans.position, (trans.position - spanVec), Color.red);
         if (Time.time - prevTime > freq) {
@@ -36,7 +37,19 @@ public class item_spawner_script : MonoBehaviour
         Vector3 tempSpawn = trans.position;
         tempSpawn.x += pos;
         GameObject item = Instantiate(itemBox, tempSpawn, Quaternion.identity);
-        //item type set here
-        item.GetComponent<item_info>().itemID = 0;
+        int randVal = Random.Range(1, 11);
+        Debug.Log(randVal);
+        if (randVal < 4) {
+            item.GetComponent<item_info>().setID(0);  //beer
+        }
+        else if (randVal < 7) {
+            item.GetComponent<item_info>().setID(1);  //chicken
+        }
+        else if (randVal < 9) {
+            item.GetComponent<item_info>().setID(3);  //bowling ball
+        }
+        else {
+            item.GetComponent<item_info>().setID(2);  //shotgun
+        }
     }
 }

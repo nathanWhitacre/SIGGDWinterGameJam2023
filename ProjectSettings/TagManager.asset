@@ -17,11 +17,11 @@ TagManager:
   - item
   - 
   - 
+  - Background
+  - rock
   - 
   - 
-  - 
-  - 
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -41,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 638937871
     locked: 0
