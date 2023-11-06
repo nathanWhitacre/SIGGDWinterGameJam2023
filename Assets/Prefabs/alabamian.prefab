@@ -241,8 +241,8 @@ MonoBehaviour:
   spawnPoints: []
   killDevTool: 0
   damageDevTool: 0
-  drunkDoT: 0
-  drunkTickTime: 0
+  drunkDoT: 1
+  drunkTickTime: 0.25
 --- !u!114 &4700458461479932413
 MonoBehaviour:
   m_ObjectHideFlags: 0
