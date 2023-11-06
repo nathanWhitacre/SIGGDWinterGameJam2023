@@ -38,7 +38,6 @@ public class item_spawner_script : MonoBehaviour
         tempSpawn.x += pos;
         GameObject item = Instantiate(itemBox, tempSpawn, Quaternion.identity);
         int randVal = Random.Range(1, 11);
-        Debug.Log(randVal);
         if (randVal < 4) {
             item.GetComponent<item_info>().setID(0);  //beer
         }
