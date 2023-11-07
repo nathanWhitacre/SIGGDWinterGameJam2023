@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject p1HealthTracker;
     [SerializeField] GameObject p2HealthTracker;
 
+    [SerializeField] GameObject p1ScoreTracker;
+    [SerializeField] GameObject p2ScoreTracker;
+
 
 
     // Update is called once per frame

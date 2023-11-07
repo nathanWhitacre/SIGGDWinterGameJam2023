@@ -23,6 +23,7 @@ public class item_spawner_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spanVec.x = spread;
         Debug.DrawLine(trans.position, (trans.position + spanVec), Color.red);
         Debug.DrawLine(trans.position, (trans.position - spanVec), Color.red);
         if (Time.time - prevTime > freq) {
@@ -37,7 +38,6 @@ public class item_spawner_script : MonoBehaviour
         tempSpawn.x += pos;
         GameObject item = Instantiate(itemBox, tempSpawn, Quaternion.identity);
         int randVal = Random.Range(1, 11);
-        Debug.Log(randVal);
         if (randVal < 4) {
             item.GetComponent<item_info>().setID(0);  //beer
         }
