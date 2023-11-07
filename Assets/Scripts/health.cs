@@ -15,7 +15,8 @@ public class health : MonoBehaviour
     private float drunkLvl;
     [SerializeField] private float drunkDoT;
     [SerializeField] private float drunkTickTime;
-    private float lastTick;    
+    private float lastTick;
+    public int deaths;
 
     
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class health : MonoBehaviour
     {
         currentHealth = maximumHealth;
         lastTick = Time.time;
+        deaths = 0;
     }
 
     public float getCurrentHealth()
@@ -76,7 +78,7 @@ public class health : MonoBehaviour
         currentHealth = maximumHealth;
         Opposite opp = GameObject.Find("GameManager").GetComponent<Opposite>();
         opp.NormalTime();
-
+        deaths += 1;
     }
 
     public void setDrunkLevel(int lev) {
