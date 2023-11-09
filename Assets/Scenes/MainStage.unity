@@ -4219,16 +4219,36 @@ PrefabInstance:
       value: balabamian
       objectReference: {fileID: 0}
     - target: {fileID: 6466485323120171707, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: drunkDoT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466485323120171707, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1670878120}
+    - target: {fileID: 6466485323120171707, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: drunkTickTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466485323120171707, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466485323120171707, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: spawnPoints.Array.data[0].x
+      value: 20.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466485323120171707, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: spawnPoints.Array.data[0].y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6492871985486445700, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: jumpStrength
       value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4540,9 +4560,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: drunkDoT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1415038038}
+    - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: drunkTickTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: spawnPoints.Array.data[0].x
+      value: -13.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: spawnPoints.Array.data[0].y
+      value: 1.74
+      objectReference: {fileID: 0}
     - target: {fileID: 4604096113096407786, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_Name
       value: alabamian
@@ -4557,7 +4597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9031541097110853996, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_LocalPosition.x

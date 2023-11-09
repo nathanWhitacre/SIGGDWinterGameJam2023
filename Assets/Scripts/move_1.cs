@@ -8,6 +8,9 @@ public class move_1 : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform trans;
+    [SerializeField] private BoxCollider hurtbox;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator spriteAnimator;
     private float rayLength;
     [SerializeField] private float jumpStrength;
     [SerializeField] private float accelSpeed;
@@ -28,7 +31,7 @@ public class move_1 : MonoBehaviour
     private RaycastHit hit;
     private BoxCollider platCollide;
 
-    private Vector3 downOffsetVec;
+    //private Vector3 downOffsetVec;
 
     private bool leftPushed;
     private bool rightPushed;
@@ -76,15 +79,17 @@ public class move_1 : MonoBehaviour
         int platformMask_temp = 1 << platformLayer;
         groundMask = (groundMask_temp | albanianMask_temp) | platformMask_temp;
         
-        sideOffset = (trans.localScale.x / 2) - 0.01f;
-        rayLength = (trans.localScale.y / 2) - 0.01f;
-        downOffsetVec = Vector3.zero;
-        downOffsetVec.y -= rayLength;
-        downOffsetVec = downOffsetVec * 0.5f;
+        //sideOffset = (trans.localScale.x / 2) - 0.01f;
+        //rayLength = (trans.localScale.y / 2) + 0.01f;
+        sideOffset = (hurtbox.size.x / 2) - 0.01f;
+        rayLength = (hurtbox.size.y / 2) + 0.01f;
+        //downOffsetVec = Vector3.zero;
+        //downOffsetVec.y -= rayLength;
+        //downOffsetVec = downOffsetVec * 0.5f;
 
 
         platCollide = trans.GetChild(0).gameObject.GetComponent<BoxCollider>();
-        //Debug.Log(platCollide);
+
         platCollide.enabled = false;
 
         leftPushed = false;
@@ -104,13 +109,25 @@ public class move_1 : MonoBehaviour
             tempV.y = -1 * terminalVelocity;
         }
 
+        spriteAnimator.SetFloat("verticalVelocity", tempV.y);
+        spriteAnimator.SetBool("diving", inDash);
+        if (inDash)
+        {
+            Debug.Log("Dashing BLEEEH");
+        }
+        if (spriteAnimator.GetBool("diving"))
+        {
+            Debug.Log("DIVING =================================");
+        }
 
         Vector3 leftPos = trans.position;
         leftPos.x -= sideOffset;
         Vector3 rightPos = trans.position;
         rightPos.x += sideOffset;
 
-        if ((Physics.Raycast((leftPos + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask)) || (Physics.Raycast((rightPos + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask)) || (Physics.Raycast((trans.position + downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask))) {
+        /*if ((Physics.Raycast((leftPos /*+ downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask)) || (Physics.Raycast((rightPos /*+ downOffsetVe), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask)) || (Physics.Raycast((trans.position /*+ downOffsetVec), (trans.up * -1), out hit, ((rayLength * 0.5f) + 0.03f), groundMask))) {*/
+        if ((Physics.Raycast((leftPos), (trans.up * -1), out hit, rayLength, groundMask)) || (Physics.Raycast((rightPos), (trans.up * -1), out hit, rayLength, groundMask)) || (Physics.Raycast((trans.position), (trans.up * -1), out hit, rayLength, groundMask)))
+        {
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.layer == platformLayer) {
                 //Debug.Log("plat collide enabled");
@@ -154,11 +171,14 @@ public class move_1 : MonoBehaviour
         
         //horizontal movement
         if (Input.GetKey(leftKey) == Input.GetKey(rightKey)) {
+            spriteAnimator.SetBool("running", false);
             tempV.x -= (tempV.x / 2) * Time.deltaTime * decelSpeed;
         }
         else if (Input.GetKey(leftKey)) {
             tempV.x += (((-1 * moveSpeed) - tempV.x) / 2) * Time.deltaTime * accelSpeed;
             facingLeft = true;
+            spriteRenderer.flipX = true;
+            spriteAnimator.SetBool("running", true);
             if (leftPushed == false) {
                 if (((Time.time - leftTime) < dashDelay) && (inDash == false)) {
                     tempV.x += (-1) * dashStrength * 5;
@@ -173,6 +193,8 @@ public class move_1 : MonoBehaviour
         else {
             tempV.x += ((moveSpeed - tempV.x) / 2) * Time.deltaTime * accelSpeed;
             facingLeft = false;
+            spriteRenderer.flipX = false;
+            spriteAnimator.SetBool("running", true);
             if (rightPushed == false) {
                 if (((Time.time - rightTime) < dashDelay) && (inDash == false)) {
                     tempV.x += dashStrength * 5;
