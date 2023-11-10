@@ -32,7 +32,7 @@ public class Burning : MonoBehaviour
 
         if (difference >= delay)
         {
-            this.GetComponent<health>().damage(damage);
+            this.GetComponent<health>().damage(damage, 3);
             last_burn = current;
             Debug.Log("BURN BABY BURN!");
         }

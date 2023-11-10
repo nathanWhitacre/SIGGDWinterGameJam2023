@@ -57,7 +57,7 @@ public class booze_binging : MonoBehaviour
         }
     }
 
-    void launchProjectile(Vector3 dir, float speed, float size, float damage, float duration) {
+    void launchProjectile(Vector3 dir, float speed, float size, float damage, float duration, int type) {
         //rock radius, force, offset are 0
         Vector3 launchPos = this.transform.position;
         if (left) {
@@ -77,6 +77,7 @@ public class booze_binging : MonoBehaviour
         proj.GetComponent<Rocked>().force = 0;
         proj.GetComponent<Rocked>().radius = 0;
         proj.GetComponent<Rocked>().offset = 0;
+        proj.GetComponent<Rocked>().type = type;
         proj.GetComponent<Rigidbody>().AddForce(dir, ForceMode.Impulse);
     }
 
@@ -92,7 +93,7 @@ public class booze_binging : MonoBehaviour
         pointDir.y += 0.63f;
         for (int i = 0; i < 7; i += 1) {
             Debug.Log("hi");
-            launchProjectile(pointDir, gunForce, 0.3f, 15f, 0.4f);
+            launchProjectile(pointDir, gunForce, 0.3f, 15f, 0.4f, 2);
             pointDir.y -= 0.21f;
         }
         playerBody.AddForce((-30 * launchDir), ForceMode.Impulse);
@@ -106,7 +107,7 @@ public class booze_binging : MonoBehaviour
         else {
             launchDir = this.gameObject.transform.right;
         }
-        launchProjectile(launchDir, ballForce, 1f, 50f, 5f);
+        launchProjectile(launchDir, ballForce, 1f, 50f, 5f, 1);
     }
 
     public void addBeer() {

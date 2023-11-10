@@ -8,6 +8,7 @@ public class Rocked : MonoBehaviour
     public float radius;
     public float offset;
     public float damage;
+    public int type = 3;
     public float duration = 2f;
     private float instTime;
 
@@ -16,7 +17,7 @@ public class Rocked : MonoBehaviour
         if (collision.gameObject.layer == 22)
         {
             collision.rigidbody.AddExplosionForce(force, this.transform.position - new Vector3(0, -offset, 0), radius);
-            collision.gameObject.GetComponent<health>().damage(damage);
+            collision.gameObject.GetComponent<health>().damage(damage, type);
             Debug.Log("EXPLODE!");
         }
         Destroy(gameObject);

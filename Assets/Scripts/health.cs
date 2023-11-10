@@ -117,34 +117,34 @@ public class health : MonoBehaviour
             return;
         }
 
-        if (type > 0) {
-            overrideKillLine = true;
-        }
-        if (type == 1) {
-            if (isPlayer1) {
-                damageLineManager.GetComponent<DamageLineManager>().playBlueBall();
-            }
-            else {
-                damageLineManager.GetComponent<DamageLineManager>().playRedBall();
-            }
-        }
-        else if (type == 2) {
-            if (isPlayer1) {
-                damageLineManager.GetComponent<DamageLineManager>().playBlueGun();
-            }
-            else {
-                damageLineManager.GetComponent<DamageLineManager>().playRedGun();
-            }
-        }
 
         currentHealth = (currentHealth - damage > 0) ? currentHealth - damage : 0;
         if (currentHealth == 0)
         {   
+            if (type > 0) {
+                overrideKillLine = true;
+            }
             if (isPlayer1 && (type == 3)) {
                 damageLineManager.GetComponent<DamageLineManager>().playBlueEnv();
             }
             else if (type == 3) {
                 damageLineManager.GetComponent<DamageLineManager>().playRedEnv();
+            }
+            else if (type == 1) {
+                if (isPlayer1) {
+                    damageLineManager.GetComponent<DamageLineManager>().playBlueBall();
+                }
+                else {
+                    damageLineManager.GetComponent<DamageLineManager>().playRedBall();
+                }
+            }
+            else if (type == 2) {
+                if (isPlayer1) {
+                    damageLineManager.GetComponent<DamageLineManager>().playBlueGun();
+                }
+                else {
+                    damageLineManager.GetComponent<DamageLineManager>().playRedGun();
+                }
             }
             kill();
         }
