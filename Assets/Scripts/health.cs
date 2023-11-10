@@ -116,7 +116,10 @@ public class health : MonoBehaviour
             Destroy(burn);
         }
 
-        gameObject.GetComponent<booze_binging>().cleanseBeer();
+        if (gameObject.GetComponent<booze_binging>() != null)
+        {
+            gameObject.GetComponent<booze_binging>().cleanseBeer();
+        }
 
         deaths += 1;
     }
