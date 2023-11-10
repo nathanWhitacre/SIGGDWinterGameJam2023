@@ -72,6 +72,11 @@ public class health : MonoBehaviour
 
     public void direct(float damage)
     {
+        if (isDead)
+        {
+            return;
+        }
+
         currentHealth = (currentHealth - damage > 0) ? currentHealth - damage : 0;
         if (currentHealth == 0)
         {
@@ -91,6 +96,10 @@ public class health : MonoBehaviour
         body.interpolation = RigidbodyInterpolation.None;
         trans.position = new Vector3(0f, -50f, 0f);
         Opposite opp = GameObject.Find("GameManager").GetComponent<Opposite>();
+        if (opp.isOppositeDay)
+        {
+            deaths += 2;
+        }
         opp.NormalTime();
 
         respawnTimerStart = Time.time;
@@ -100,6 +109,14 @@ public class health : MonoBehaviour
         AudioSource[] killLines = enemy.GetComponent<health>().punchKillVoiceLines;
         int randomVO = Random.Range(0, killLines.Length - 1);
         killLines[randomVO].Play();
+
+        Burning burn = gameObject.GetComponent<Burning>();
+        if (burn != null)
+        {
+            Destroy(burn);
+        }
+
+        gameObject.GetComponent<booze_binging>().cleanseBeer();
 
         deaths += 1;
     }

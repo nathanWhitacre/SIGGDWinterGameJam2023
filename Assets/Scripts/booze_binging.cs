@@ -123,7 +123,7 @@ public class booze_binging : MonoBehaviour
             Debug.Log("no more drinksies");
         }
         this.gameObject.GetComponent<PunchAttack>().setDrunkDmg(beerLevel);
-        this.gameObject.GetComponent<PunchAttack>().setDrunkDmg(beerLevel);
+        this.gameObject.GetComponent<health>().setDrunkLevel(beerLevel);
     }
 
     public void cleanseBeer() {

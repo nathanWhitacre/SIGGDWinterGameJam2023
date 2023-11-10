@@ -224,13 +224,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOne: 1
-  moveSpeed: 8
+  moveSpeed: 12
   body: {fileID: 8390775052247146394}
   trans: {fileID: 9031541097110853996}
   hurtbox: {fileID: 5481427146482122883}
   spriteRenderer: {fileID: 5350965644999182775}
   spriteAnimator: {fileID: 1748116246515973523}
-  jumpStrength: 4.5
+  jumpStrength: 7
   accelSpeed: 30
   decelSpeed: 8
   facingLeft: 0
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08811779b62ac434db8ce80305663c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 35
+  baseDamage: 15
   drunkDmg: 4
   baseLungeImpulse: 5
   drunkLunge: 3
@@ -1173,6 +1173,7 @@ MonoBehaviour:
   - {fileID: 4921177554758395941}
   drunkDoT: 1
   drunkTickTime: 0.25
+  deaths: 0
 --- !u!82 &675265214504986989
 AudioSource:
   m_ObjectHideFlags: 0

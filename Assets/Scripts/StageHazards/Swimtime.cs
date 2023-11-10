@@ -13,6 +13,15 @@ public class Swimtime : MonoBehaviour
         {
             float speed = collider.gameObject.GetComponent<move_1>().getSpeed();
             collider.gameObject.GetComponent<move_1>().setSpeed(speed * slowFactor);
+
+            Burning burn = collider.gameObject.GetComponent<Burning>();
+            if (burn != null)
+            {
+                Destroy(burn);
+            }
+
+            collider.gameObject.GetComponent<booze_binging>().cleanseBeer();
+
         }
     }
 

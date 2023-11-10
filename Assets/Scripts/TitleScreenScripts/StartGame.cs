@@ -18,6 +18,13 @@ public class StartGame : MonoBehaviour
     }
     public void playGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        if (SceneManager.GetActiveScene().buildIndex > 2)
+        {
+            SceneManager.LoadScene(0);
+        } else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

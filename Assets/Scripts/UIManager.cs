@@ -25,7 +25,13 @@ public class UIManager : MonoBehaviour
         TextMeshProUGUI p1HealthField = p1HealthTracker.GetComponent<TextMeshProUGUI>();
         p1HealthField.SetText("" + p1Health.getCurrentHealth());
 
+        TextMeshProUGUI p1ScoreField = p1ScoreTracker.GetComponent<TextMeshProUGUI>();
+        p1ScoreField.SetText("" + p2Health.deaths);
+
         TextMeshProUGUI p2HealthField = p2HealthTracker.GetComponent<TextMeshProUGUI>();
         p2HealthField.SetText("" + p2Health.getCurrentHealth());
+
+        TextMeshProUGUI p2ScoreField = p2ScoreTracker.GetComponent<TextMeshProUGUI>();
+        p2ScoreField.SetText("" + p1Health.deaths);
     }
 }
