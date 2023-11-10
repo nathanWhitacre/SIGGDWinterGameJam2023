@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class health : MonoBehaviour
 {
+    [SerializeField] private bool isPlayer1;
     [SerializeField] public int maximumHealth = 100;
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform trans;
@@ -13,6 +14,7 @@ public class health : MonoBehaviour
     [SerializeField] private bool killDevTool = false;
     [SerializeField] private bool damageDevTool = false;
     [SerializeField] public AudioSource[] punchKillVoiceLines;
+    [SerializeField] private GameObject damageLineManager;
     private float currentHealth = 1;
     private float drunkLvl;
     [SerializeField] private float drunkDoT;
@@ -23,6 +25,7 @@ public class health : MonoBehaviour
     bool isRespawning;
     float respawnTimerStart;
     public int deaths;
+    private bool overrideKillLine;
 
     
     // Start is called before the first frame update
@@ -32,6 +35,7 @@ public class health : MonoBehaviour
         isRespawning = false;
         currentHealth = maximumHealth;
         lastTick = Time.time;
+        overrideKillLine = false;
 
         foreach (AudioSource voiceLine in punchKillVoiceLines)
         {
@@ -70,6 +74,23 @@ public class health : MonoBehaviour
         }
     }
 
+    public void damage(float damage, int type) {
+        //types:
+        //punch = 0
+        //ball = 1
+        //gun = 2
+        //env = 3
+        Opposite opp = GameObject.Find("GameManager").GetComponent<Opposite>();
+        if (opp.isOppositeDay)
+        {
+            GameObject target = (this.GetComponent<move_1>().playerOne) ? opp.getP2() : opp.getP1();
+            target.GetComponent<health>().direct(damage, type);
+        } else
+        {
+            direct(damage, type);
+        }
+    }
+
     public void direct(float damage)
     {
         if (isDead)
@@ -82,6 +103,52 @@ public class health : MonoBehaviour
         {
             kill();
         }
+    }
+
+    public void direct(float damage, int type)
+    {
+        //types:
+        //0 = punch
+        //1 = ball
+        //2 = gun
+        //3 = env
+        if (isDead)
+        {
+            return;
+        }
+
+        if (type > 0) {
+            overrideKillLine = true;
+        }
+        if (type == 1) {
+            if (isPlayer1) {
+                damageLineManager.GetComponent<DamageLineManager>().playBlueBall();
+            }
+            else {
+                damageLineManager.GetComponent<DamageLineManager>().playRedBall();
+            }
+        }
+        else if (type == 2) {
+            if (isPlayer1) {
+                damageLineManager.GetComponent<DamageLineManager>().playBlueGun();
+            }
+            else {
+                damageLineManager.GetComponent<DamageLineManager>().playRedGun();
+            }
+        }
+
+        currentHealth = (currentHealth - damage > 0) ? currentHealth - damage : 0;
+        if (currentHealth == 0)
+        {   
+            if (isPlayer1 && (type == 3)) {
+                damageLineManager.GetComponent<DamageLineManager>().playBlueEnv();
+            }
+            else if (type == 3) {
+                damageLineManager.GetComponent<DamageLineManager>().playRedEnv();
+            }
+            kill();
+        }
+        overrideKillLine = false;
     }
 
 
@@ -108,7 +175,9 @@ public class health : MonoBehaviour
         GameObject enemy = (this.GetComponent<move_1>().playerOne) ? opp.getP2() : opp.getP1();
         AudioSource[] killLines = enemy.GetComponent<health>().punchKillVoiceLines;
         int randomVO = Random.Range(0, killLines.Length - 1);
-        killLines[randomVO].Play();
+        if (overrideKillLine == false) {
+            killLines[randomVO].Play();
+        }
 
         Burning burn = gameObject.GetComponent<Burning>();
         if (burn != null)
