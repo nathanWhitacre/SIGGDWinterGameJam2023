@@ -75,7 +75,7 @@ public class Match : MonoBehaviour
         if (p1.GetComponent<health>().deaths > p2.GetComponent<health>().deaths)
         {
             SceneManager.LoadScene(3);
-        } else if (p1.GetComponent<health>().deaths > p2.GetComponent<health>().deaths)
+        } else if (p2.GetComponent<health>().deaths > p1.GetComponent<health>().deaths)
         {
             SceneManager.LoadScene(4);
         } else
