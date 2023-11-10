@@ -22,6 +22,7 @@ public class health : MonoBehaviour
     bool isDead;
     bool isRespawning;
     float respawnTimerStart;
+    public int deaths;
 
     
     // Start is called before the first frame update
@@ -37,6 +38,8 @@ public class health : MonoBehaviour
             voiceLine.volume = 0.5f;
             voiceLine.playOnAwake = false;
         }
+
+        deaths = 0;
     }
 
     public float getCurrentHealth()
@@ -89,6 +92,7 @@ public class health : MonoBehaviour
         trans.position = new Vector3(0f, -50f, 0f);
         Opposite opp = GameObject.Find("GameManager").GetComponent<Opposite>();
         opp.NormalTime();
+
         respawnTimerStart = Time.time;
         isDead = true;
 
@@ -96,6 +100,8 @@ public class health : MonoBehaviour
         AudioSource[] killLines = enemy.GetComponent<health>().punchKillVoiceLines;
         int randomVO = Random.Range(0, killLines.Length - 1);
         killLines[randomVO].Play();
+
+        deaths += 1;
     }
 
     public void setDrunkLevel(int lev) {
