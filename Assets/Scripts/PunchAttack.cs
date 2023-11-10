@@ -18,6 +18,7 @@ public class PunchAttack : MonoBehaviour
     [SerializeField] private GameObject rightPunchHitBox;
     [SerializeField] private GameObject leftPunchHitBox;
     [SerializeField] private Animator spriteAnimator;
+    [SerializeField] private AudioSource[] punchVoiceLines;
 
     private bool isPunching = false;
     private float punchLingerTime = 0.4f;
@@ -29,6 +30,14 @@ public class PunchAttack : MonoBehaviour
         damage = baseDamage;
         knockback = baseKnockback;
         lungeImpulse = baseLungeImpulse;
+
+        foreach (AudioSource voiceLine in punchVoiceLines)
+        {
+            voiceLine.volume = 0.2f;
+            voiceLine.playOnAwake = false;
+        }
+
+
     }
 
     // Update is called once per frame
@@ -59,6 +68,15 @@ public class PunchAttack : MonoBehaviour
             punchStartTime = Time.time;
 
             previousPunch = randomPunch;
+
+            if (Random.Range(0, 100) == 0)
+            {
+                punchVoiceLines[8].Play();
+            } else
+            {
+                int randomVO = Random.Range(0, punchVoiceLines.Length - 1);
+                punchVoiceLines[randomVO].Play();
+            }
 
             Rigidbody playerRigidBody = player.gameObject.GetComponent<Rigidbody>();
             if (player.GetComponent<move_1>().facingLeft)

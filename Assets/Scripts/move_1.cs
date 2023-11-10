@@ -62,15 +62,17 @@ public class move_1 : MonoBehaviour
             leftKey = KeyCode.A;
             rightKey = KeyCode.D;
             upKey = KeyCode.W;
+            facingLeft = false;
         }
         else {
             leftKey = KeyCode.J;
             rightKey = KeyCode.L;
             upKey = KeyCode.I;
+            facingLeft = true;
         }
 
         grounded = true;
-        facingLeft = true;
+        //facingLeft = true;
         floorLayer = LayerMask.NameToLayer("floor");
         albanianLayer = LayerMask.NameToLayer("albanian");
         platformLayer = LayerMask.NameToLayer("platform");
@@ -232,6 +234,11 @@ public class move_1 : MonoBehaviour
 
         tempV.z = 0;
         body.velocity = tempV;
+
+        if (facingLeft != spriteRenderer.flipX)
+        {
+            spriteRenderer.flipX = facingLeft;
+        }
 
         
     }

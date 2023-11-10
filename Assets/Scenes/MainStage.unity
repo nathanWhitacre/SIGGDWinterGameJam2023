@@ -4568,6 +4568,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1415038038}
     - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: respawnDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: drunkTickTime
       value: 0.25
       objectReference: {fileID: 0}
@@ -4581,7 +4585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: spawnPoints.Array.data[0].y
-      value: 1.74
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4604096113096407786, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: m_Name
