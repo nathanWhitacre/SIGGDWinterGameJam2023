@@ -11,6 +11,8 @@ public class move_1 : MonoBehaviour
     [SerializeField] private BoxCollider hurtbox;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator spriteAnimator;
+    [SerializeField] private GameObject SFXManager;
+    private SoundEffectsManager sfxManager;
     private float rayLength;
     [SerializeField] private float jumpStrength;
     [SerializeField] private float accelSpeed;
@@ -98,7 +100,9 @@ public class move_1 : MonoBehaviour
         rightPushed = false;
         inDash = false;
         trampd = false;
-        
+
+        sfxManager = SFXManager.GetComponent<SoundEffectsManager>();
+
     }
 
     // Update is called once per frame
@@ -148,6 +152,9 @@ public class move_1 : MonoBehaviour
                     }
                     trampd = true;
                     grounded = false;
+
+                    //SoundEffectsManager sfxManager = SFXManager.GetComponent<SoundEffectsManager>();
+                    sfxManager.trampolineBounce.Play();
                     //Debug.Log("trampd");
                 }
                 if (hitObject.tag != "trampoline") {
