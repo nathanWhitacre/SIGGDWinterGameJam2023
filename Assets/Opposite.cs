@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Opposite : MonoBehaviour
 {
-    [SerializeField] private float chance;
+    [SerializeField] private float maxAddTime;
     [SerializeField] private GameObject P1;
     [SerializeField] private GameObject P2;
     [SerializeField] private float minoppRate;
@@ -23,6 +23,8 @@ public class Opposite : MonoBehaviour
     void Start()
     {
         NormalTime();
+        last_opposite = 0f;
+        next_opposite = Time.time + minoppRate + Random.RandomRange(0f, maxAddTime);
     }
 
     // Update is called once per frame
@@ -56,10 +58,12 @@ public class Opposite : MonoBehaviour
 
     public void NormalTime()
     {
-        isOppositeDay = false;
-        next_opposite = Time.time + minoppRate + Random.RandomRange(0f, 25f);
-        Debug.Log("Normal Time!");
-        vol.weight = 0f;
+        if (isOppositeDay) {
+            isOppositeDay = false;
+            next_opposite = Time.time + minoppRate + Random.RandomRange(0f, maxAddTime);
+            Debug.Log("Normal Time!");
+            vol.weight = 0f;
+        }
     }
 
 
