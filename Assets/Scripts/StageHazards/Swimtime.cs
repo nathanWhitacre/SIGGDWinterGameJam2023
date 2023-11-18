@@ -17,6 +17,7 @@ public class Swimtime : MonoBehaviour
             Burning burn = collider.gameObject.GetComponent<Burning>();
             if (burn != null)
             {
+                burn.stopFireSFX();
                 Destroy(burn);
             }
 

@@ -10,12 +10,17 @@ public class Burning : MonoBehaviour
 
     private float last_burn;
     private float destructTime;
+    //private GameObject SFXManager;
+    private SoundEffectsManager sfxManager;
+    private AudioSource fireSFX;
 
     // Start is called before the first frame update
     void Start()
     {
         last_burn = Time.time;
         destructTime = -1;
+        sfxManager = FindObjectOfType<SoundEffectsManager>();
+        fireSFX = sfxManager.fireLoop;
     }
 
     private void Update()
@@ -24,6 +29,11 @@ public class Burning : MonoBehaviour
         {
             if (Time.time > destructTime)
             {
+                //if (fireSFX.isPlaying)
+                //{
+                    fireSFX.Stop();
+                    Debug.Log("STOP BEING ON FIRE");
+                //}
                 Destroy(this);
             }
         }
@@ -35,6 +45,10 @@ public class Burning : MonoBehaviour
             this.GetComponent<health>().damage(damage, 3);
             last_burn = current;
             Debug.Log("BURN BABY BURN!");
+            if (!fireSFX.isPlaying && !this.GetComponent<health>().isDead)
+            {
+                fireSFX.Play();
+            }
         }
     }
 
@@ -64,5 +78,14 @@ public class Burning : MonoBehaviour
     public void SetDuration(float duration)
     {
         destructDuration = duration;
+    }
+
+    public void stopFireSFX()
+    {
+        //if (fireSFX.isPlaying)
+        //{
+            fireSFX.Stop();
+            Debug.Log("STOP BEING ON FIRE");
+        //}
     }
 }

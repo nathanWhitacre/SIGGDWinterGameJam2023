@@ -18,6 +18,9 @@ public class booze_binging : MonoBehaviour
 
     [SerializeField] private GameObject projectile;
     [SerializeField] private Rigidbody playerBody;
+
+    [SerializeField] private GameObject SFXManager;
+    private SoundEffectsManager sfxManager;
     private bool left;
 
     // Start is called before the first frame update
@@ -36,6 +39,8 @@ public class booze_binging : MonoBehaviour
         itemLayer = LayerMask.NameToLayer("item");
         shotgunEquipped = false;
         ballEquipped = false;
+
+        sfxManager = SFXManager.GetComponent<SoundEffectsManager>();
     }
 
     // Update is called once per frame
@@ -119,6 +124,7 @@ public class booze_binging : MonoBehaviour
             beerInv -= 1;
             beerLevel += 1;
             Debug.Log("glug glug");
+            sfxManager.beerDrink.Play();
         }
         else {
             Debug.Log("no more drinksies");
@@ -132,6 +138,8 @@ public class booze_binging : MonoBehaviour
         Debug.Log("sober");
         this.gameObject.GetComponent<PunchAttack>().setDrunkDmg(beerLevel);
         this.gameObject.GetComponent<health>().setDrunkLevel(beerLevel);
+
+        sfxManager.poisonCleansed.Play();
     }
 
     public int getBeerInv() {
@@ -145,6 +153,8 @@ public class booze_binging : MonoBehaviour
     void eatChicken() {
         Debug.Log("nom nom");
         this.gameObject.GetComponent<health>().fullHealth();
+
+        sfxManager.getFood.Play();
     }
 
     void OnCollisionEnter(Collision col) {
@@ -154,6 +164,7 @@ public class booze_binging : MonoBehaviour
             Debug.Log("id " + id);
             if (id == 0) {
                 this.addBeer();
+                sfxManager.getItem.Play();
             }
             else if (id == 1) {
                 this.eatChicken();
@@ -163,13 +174,14 @@ public class booze_binging : MonoBehaviour
                 //replace ball if equipped
                 shotgunEquipped = true;
                 ballEquipped = false;
-
+                sfxManager.getItem.Play();
             }
             else if ((id == 3) && (ballEquipped == false)) {
                 //show ball on model
                 //replace shotgun if equipped
                 ballEquipped = true;
                 shotgunEquipped = false;
+                sfxManager.getItem.Play();
             }
             Destroy(item);
         }

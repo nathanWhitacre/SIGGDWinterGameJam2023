@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,15 +16,17 @@ public class health : MonoBehaviour
     [SerializeField] private bool damageDevTool = false;
     [SerializeField] public AudioSource[] punchKillVoiceLines;
     [SerializeField] private GameObject damageLineManager;
+    [SerializeField] private GameObject SFXManager;
+    private SoundEffectsManager sfxManager;
     private float currentHealth = 1;
     private float drunkLvl;
     [SerializeField] private float drunkDoT;
     [SerializeField] private float drunkTickTime;
     private float lastTick;
 
-    bool isDead;
-    bool isRespawning;
-    float respawnTimerStart;
+    public bool isDead;
+    public bool isRespawning;
+    private float respawnTimerStart;
     public int deaths;
     private bool overrideKillLine;
 
@@ -44,6 +47,8 @@ public class health : MonoBehaviour
         }
 
         deaths = 0;
+
+        sfxManager = SFXManager.GetComponent<SoundEffectsManager>();
     }
 
     public float getCurrentHealth()
@@ -145,6 +150,9 @@ public class health : MonoBehaviour
                 else {
                     damageLineManager.GetComponent<DamageLineManager>().playRedGun();
                 }
+            } else if (type == 1)
+            {
+                sfxManager.playSmack();
             }
             kill();
         }
@@ -182,6 +190,7 @@ public class health : MonoBehaviour
         Burning burn = gameObject.GetComponent<Burning>();
         if (burn != null)
         {
+            burn.stopFireSFX();
             Destroy(burn);
         }
 
