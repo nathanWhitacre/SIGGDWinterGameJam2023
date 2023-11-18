@@ -8545,6 +8545,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6466485323120171707, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
+      propertyPath: SFXManager
+      value: 
+      objectReference: {fileID: 1232425844}
+    - target: {fileID: 6466485323120171707, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1670878120}
@@ -8639,6 +8643,7 @@ MonoBehaviour:
   frontOffset: 1.5
   projectile: {fileID: 5328969914178932489, guid: 69f39e2b44dad7a47b55a59529eaf196, type: 3}
   playerBody: {fileID: 1415038040}
+  SFXManager: {fileID: 1232425844}
 --- !u!54 &1415038040 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 8390775052247146394, guid: ac82635c1e68fc64da963bc21d1ca0bc, type: 3}
@@ -8882,6 +8887,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
+      propertyPath: SFXManager
+      value: 
+      objectReference: {fileID: 1232425844}
+    - target: {fileID: 333643746088228355, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1415038038}
@@ -9008,6 +9017,7 @@ MonoBehaviour:
   frontOffset: 1.5
   projectile: {fileID: 5328969914178932489, guid: 69f39e2b44dad7a47b55a59529eaf196, type: 3}
   playerBody: {fileID: 1670878122}
+  SFXManager: {fileID: 1232425844}
 --- !u!54 &1670878122 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 8390775052247146394, guid: 49bc8a8c9edf4a849b47a6bf1984488d, type: 3}
